@@ -1,0 +1,102 @@
+// Variáveis
+@primary-color: #3498db;
+@secondary-color: #2ecc71;
+@text-color: #333;
+@font-stack: 'Arial, sans-serif';
+@header-height: 60px;
+@sidebar-width: 200px;
+
+// Mixins
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+      -ms-border-radius: @radius;
+       -o-border-radius: @radius;
+          border-radius: @radius;
+}
+
+// Estilos globais
+body {
+  font-family: @font-stack;
+  color: @text-color;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+header {
+  background-color: @primary-color;
+  color: white;
+  height: @header-height;
+  .flex-center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  margin-top: @header-height;
+}
+
+.sidebar {
+  width: @sidebar-width;
+  background-color: @secondary-color;
+  position: fixed;
+  top: @header-height;
+  bottom: 0;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      a {
+        display: block;
+        padding: 15px;
+        color: white;
+        text-decoration: none;
+        &:hover {
+          background-color: darken(@secondary-color, 10%);
+        }
+      }
+    }
+  }
+}
+
+main {
+  margin-left: @sidebar-width;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  .card {
+    background-color: white;
+    padding: 20px;
+    .border-radius(10px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    h3 {
+      margin-top: 0;
+    }
+  }
+}
+
+footer {
+  background-color: @primary-color;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
